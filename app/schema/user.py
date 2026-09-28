@@ -14,3 +14,7 @@ class UserResponse(BaseModel):
     username: str
     tenant_id: int
     role: str
+
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str
