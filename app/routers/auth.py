@@ -5,6 +5,7 @@ from app.database.connection import get_db
 from app.repositories.user_repository import UserRepository
 from app.schema.user import UserRegister, UserLogin, UserResponse, TokenResponse
 from app.services.auth_service import AuthService
+from app.core.security import get_current_user
 
 
 router = APIRouter(
@@ -60,3 +61,9 @@ def login(
             status_code=401,
             detail=str(e)
         )
+        
+@router.get("/me")
+def get_me(
+    current_user: dict = Depends(get_current_user)
+):
+    return current_user
