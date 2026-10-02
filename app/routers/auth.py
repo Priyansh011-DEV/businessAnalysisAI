@@ -67,3 +67,12 @@ def get_me(
     current_user: dict = Depends(get_current_user)
 ):
     return current_user
+
+
+@router.post("/logout")
+def logout(
+    current_user: dict = Depends(get_current_user)
+):
+    return {
+        "message": "Logged out successfully"
+    }
